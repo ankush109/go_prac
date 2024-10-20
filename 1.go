@@ -6,6 +6,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"time"
 )
 
 var age = 20
@@ -108,7 +109,29 @@ func main() {
 	content := string(databytes)
 	fmt.Println(content)
 
+	// pointers in golang
+	myorder := newOrder("1", 40.40, "recieved")
+	fmt.Println(myorder)
+
 }
+
+type order struct {
+	id        string
+	amount    float32
+	status    string
+	createdAt time.Time
+}
+
+// returns pointer to the struct instance
+func newOrder(id string, amount float32, status string) *order {
+	myOrder := order{
+		id:     id,
+		amount: amount,
+		status: status,
+	}
+	return &myOrder
+}
+
 func add(a, b int) int {
 	return a + b
 }
