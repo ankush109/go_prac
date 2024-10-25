@@ -2,9 +2,14 @@ package main
 
 import "fmt"
 
+type transmission interface {
+	ShiftUp()
+	ShiftDown()
+}
+
 type Convertable struct {
 	Engine
-	Transmission
+	transmission
 	SteeringWheel
 }
 

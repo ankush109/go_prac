@@ -5,7 +5,7 @@ type Startable interface {
 }
 
 // composition pattern in go
-func startEngines(cars ...startable) {
+func startEngines(cars ...Startable) {
 	for _, car := range cars {
 		car.Start()
 	}
@@ -13,7 +13,7 @@ func startEngines(cars ...startable) {
 func main() {
 	myConvertable := Convertable{
 		Engine{},
-		Transmission{},
+		EnhancedTransmission{},
 		SteeringWheel{},
 	}
 	myTruck := Truck{
